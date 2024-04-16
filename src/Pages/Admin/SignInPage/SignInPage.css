@@ -1,0 +1,7 @@
+#background {
+  background-image: url('https://img.freepik.com/free-photo/loft-living-room-interior-design_53876-145499.jpg?w=900&t=st=1670167853~exp=1670168453~hmac=8d1bd20c019e7270fa70ca59635aa5872033ba26403787a61c81c5a5e0b914f6');
+  background-size: cover;
+  position: relative;
+  min-height: 580px;
+  background-attachment: fixed;
+}

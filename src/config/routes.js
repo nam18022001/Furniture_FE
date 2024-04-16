@@ -1,0 +1,16 @@
+export const routes = {
+  admin: '/admin',
+  signInAdmin: '/admin/signin',
+  adminRoute: '/admin/:adminRoute',
+  resetPassword: '/resetpassword',
+  home: '/',
+  aboutUs: '/aboutus',
+  signInUser: '/signin',
+  signUpUser: '/signup',
+  profile: '/profile',
+  orderHistory: '/orders',
+  changePassword: '/change-pass',
+  product: '/product@:product',
+  cart: '/cart',
+  checkout: '/checkout-success',
+};

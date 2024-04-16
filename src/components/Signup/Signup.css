@@ -1,0 +1,69 @@
+#bg {
+  background-image: url('https://img.freepik.com/free-photo/japandi-living-room-interior-design_53876-145502.jpg?w=900&t=st=1669881374~exp=1669881974~hmac=ac0c84ea8a902d9a978c48350a2a6e60a924d95092217be601ae4ca3bfb0b1ed');
+  background-size: cover;
+  position: relative;
+  min-height: 150vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+#showPassIcon1 {
+  margin-left: 450px;
+  color: rgb(248, 181, 143);
+  cursor: pointer;
+  margin-top: -47px;
+}
+.signup-page {
+  position: absolute;
+  width: 500px;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+}
+.signup-page input {
+  width: 100%;
+  outline: none;
+  border: 1px solid #eee;
+  padding: 0.8rem 1.5rem;
+  margin: 1rem;
+  font-size: 15px;
+}
+.signup-page input[type='submit'] {
+  background: #eab676;
+  color: white;
+  max-width: 250px;
+  margin-left: 136px;
+
+  cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  #signup {
+    padding: 1rem;
+  }
+  .signup-page {
+    position: relative;
+    width: 100%;
+    padding: 1rem;
+  }
+  .form-order {
+    padding: 1rem;
+  }
+  .signup-page input,
+  textarea {
+    margin: 8px 0;
+  }
+  .signup-page textarea {
+    margin: 10px 0;
+  }
+}
+@media screen and (max-width: 500px) {
+  .form-signup input {
+    font-size: 16px;
+  }
+}
