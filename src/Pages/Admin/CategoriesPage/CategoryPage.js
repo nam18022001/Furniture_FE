@@ -27,7 +27,6 @@ function CategoryPage() {
   const [total, setTotal] = useState(0);
 
   const totalPage = Math.ceil(total / limit);
-  console.log(pages);
 
   useEffect(() => {
     let page = [];

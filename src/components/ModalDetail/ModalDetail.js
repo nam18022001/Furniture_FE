@@ -136,12 +136,11 @@ function ModalDetail({ onCLickSubmit, toggleModal, detail, from = 'admin' }) {
                   </div>
                   <div className="flex ">
                     <div className="flex-[0.3] font-semibold">Payment:</div>
-                    <div className="flex-[0.7]"> {detail.payment.PaymentMethod.method}</div>
+                    <div className="flex-[0.7]"> {detail.payment.paymentmethod.method}</div>
                   </div>
                   <div className="flex ">
                     <div className="flex-[0.3] font-semibold">Cancel Order:</div>
                     <div className={detail.order.cancelOrder === true ? 'flex-[0.7] text-red-700' : 'flex-[0.7]'}>
-                      {' '}
                       {detail.order.cancelOrder === true ? 'CANCEL' : 'NO'}
                     </div>
                   </div>
@@ -150,17 +149,16 @@ function ModalDetail({ onCLickSubmit, toggleModal, detail, from = 'admin' }) {
                   <div className="flex ">
                     <div className="flex-[0.3] font-semibold"> Full Name:</div>
                     <div className="flex-[0.7]">
-                      {' '}
-                      {detail.order.User.firstName} {detail.order.User.lastName}
+                      {detail.order.user.firstName} {detail.order.user.lastName}
                     </div>
                   </div>
                   <div className="flex ">
                     <div className="flex-[0.3] font-semibold"> Phone:</div>
-                    <div className="flex-[0.7]"> {detail.order.User.phone}</div>
+                    <div className="flex-[0.7]"> {detail.order.user.phone}</div>
                   </div>
                   <div className="flex ">
                     <div className="flex-[0.3] font-semibold"> Email:</div>
-                    <div className="flex-[0.7]"> {detail.order.User.email}</div>
+                    <div className="flex-[0.7]"> {detail.order.user.email}</div>
                   </div>
                 </div>
                 <div className="flex-[0.5]  flex flex-col overflow-auto px-2 h-detailModal overflow-y-auto">

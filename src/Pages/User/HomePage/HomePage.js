@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import CryptoJS from 'crypto-js';
 
 import { Image } from '~/components/Image';
-import { Toast } from '~/components/Toast';
 import CustomAxios, { baseURL } from '~/config/api';
 import { FilterContext } from '~/contexts/FilterContextProvider';
 import useCartContext from '~/hooks/useCartContext';
@@ -16,13 +15,6 @@ function UserPage() {
   // eslint-disable-next-line
   const [stateCart, dispatchCart] = useCartContext();
 
-  const { state } = useLocation();
-  const [stateLocal, setStateLocal] = useState({
-    content: 'Welcome to Furniture Online Store!',
-    toastSignInTime: 5000,
-    type: 'success',
-  });
-
   const [allProduct, setAllProduct] = useState([]);
   // console.log(allProduct);
 
@@ -33,7 +25,6 @@ function UserPage() {
     else getAllProduct();
   };
 
-  const [showToast, setShowToast] = useState(true);
   useEffect(() => {
     getAllProduct();
   }, []);
@@ -46,18 +37,6 @@ function UserPage() {
     }
   }, [stateFilter]);
 
-  useEffect(() => {
-    let idTime;
-    if (state) {
-      setStateLocal({ content: state.content, toastSignInTime: state.toastSignInTime, type: state.type });
-    }
-    idTime = setTimeout(() => {
-      setShowToast(false);
-    }, stateLocal.toastSignInTime);
-
-    return () => clearTimeout(idTime);
-    // eslint-disable-next-line
-  }, [state]);
   const getAllProduct = async () => {
     const product = await CustomAxios.get('/api/v1/products/', {
       params: {
@@ -135,9 +114,6 @@ function UserPage() {
 
   return (
     <>
-      {showToast && (
-        <Toast className={'fixed right-5 bottom-1 z-50'} type={stateLocal.type} content={stateLocal.content} />
-      )}
       <div className="w-full col-span-12 lg:col-span-3 ">
         <div className="flex items-center mb-4">
           <select
@@ -153,7 +129,7 @@ function UserPage() {
           </select>
         </div>
 
-        <div className="md:grid md:grid-cols-2 w-full lg:grid-cols-3 gap-6 h-[60rem] overflow-y-auto">
+        <div className="md:grid md:grid-cols-2 w-full lg:grid-cols-3 gap-6 h-[66rem] overflow-y-auto">
           {allProduct.length > 0 &&
             allProduct.map((product) => {
               let imageUrl;
@@ -163,7 +139,10 @@ function UserPage() {
                 imageUrl = '';
               }
               return (
-                <div key={product.id} className="shadow-[rgba(0,0,0,0.24)_0px_3px_8px] my-3">
+                <div
+                  key={product.id}
+                  className="shadow-[rgba(0,0,0,0.24)_0px_3px_8px] border !border-transparent hover:!border-slate-500 my-3 rounded"
+                >
                   <Link
                     className="bg-white rounded overflow-hidden flex flex-col justify-between items-center"
                     to={`/product@${encodeURIComponent(
@@ -180,9 +159,13 @@ function UserPage() {
                         </h4>
                       </div>
                       <div className="flex flex-col mb-1 ">
-                        <p className="text-base font-regular">{product.category.type}</p>
+                        <p className="text-base font-regular">
+                          <span className="text-medium">Category:</span> {product.category.type}
+                        </p>
 
-                        <p className="text-base  font-regular">{product.manufacturer.manufacturerName}</p>
+                        <p className="text-base  font-regular">
+                          <span className="text-medium">Manufacturer:</span> {product.manufacturer.manufacturerName}
+                        </p>
                       </div>
                       <div className="flex items-baseline mb-1 space-x-2">
                         <p className="text-xl text-primary font-semibold">

@@ -65,14 +65,18 @@ function Search() {
                   to={`/product@${encodeURIComponent(CryptoJS.Rabbit.encrypt(`${result.id}`, 'hashUrlProductDetail'))}`}
                 >
                   <div className="flex h-full my-3 hover:bg-slate-300/40 p-2 rounded overflow-hidden text-ellipsis">
-                    <Image src={imageUrl} alt={result.name} className="w-1/3 h-1/3 sm:w-1/4 sm:h-1/4 rounded" />
+                    <Image
+                      src={imageUrl}
+                      alt={result.name}
+                      className="w-1/3 h-1/3 sm:w-1/4 sm:h-1/4 rounded object-cover"
+                    />
                     <div className="flex flex-col flex-1 mx-2">
                       <div className="text-[16px] sm:text-xl text-orange-300 font-bold">{result.name}</div>
                       <div className="text-[14px] sm:text-[16px]">
-                        Type: <strong>{result.Category.type}</strong>
+                        Type: <strong>{result.category.type}</strong>
                       </div>
                       <div className="text-[14px] sm:text-[16px]">
-                        Manufacturer: <strong>{result.Manufacturer.manufacturerName}</strong>
+                        Manufacturer: <strong>{result.manufacturer.manufacturerName}</strong>
                       </div>
                       <div className="font-semibold text-[14px] sm:text-[18px]">
                         {result.salePrice.toLocaleString()} VND

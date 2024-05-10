@@ -444,9 +444,9 @@ function ProductPage() {
                   />
                 </td>
                 <td className="py-4 px-6">
-                  {product.Manufacturer.manufacturerName ? product.Manufacturer.manufacturerName : ''}
+                  {product.manufacturer.manufacturerName ? product.manufacturer.manufacturerName : ''}
                 </td>
-                <td className="py-4 px-6">{product.Category.type}</td>
+                <td className="py-4 px-6">{product.category.type}</td>
                 <td className="py-4 px-6">{product.price.toLocaleString()} VND</td>
                 <td className="py-4 px-6">{product.salePrice.toLocaleString()} VND</td>
                 <td className="py-4 px-6">{product.color}</td>

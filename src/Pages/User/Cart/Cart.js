@@ -136,9 +136,9 @@ function Cart() {
     }
   };
   return (
-    <div className="flex container py-5">
+    <div className="flex lg:flex-row flex-col-reverse container py-5 ">
       <ToastContainer />
-      <div className="w-3/5 flex flex-col h-cart overflow-auto">
+      <div className="lg:w-3/5 flex flex-col max-h-[calc(100vh/2)] lg:max-h-[calc(100vh/1.2)] overflow-auto sm:px-3">
         {stateCart.map((cart, index) => (
           <div
             key={cart.productId}
@@ -150,8 +150,8 @@ function Cart() {
           >
             <Image src={cart.imageUrl} className="w-36 rounded" alt={cart.nameProduct} />
             <div className="ml-2 flex-1 flex flex-col justify-around">
-              <div className="text-2xl font-bold"> {cart.nameProduct}</div>
-              <div className="text-lg font-semibold"> {cart.currentPrice.toLocaleString()} VND</div>
+              <div className="text-lg sm:text-2xl font-bold"> {cart.nameProduct}</div>
+              <div className="text-base sm:text-lg font-semibold"> {cart.currentPrice.toLocaleString()} VND</div>
               <div className="flex text-xl border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max">
                 <button
                   onClick={() => handleQuantity('down', index)}
@@ -171,7 +171,7 @@ function Cart() {
             <div className="flex justify-center items-center h-full">
               <button
                 onClick={() => handleDeleteItem(index)}
-                className="w-10 h-10 flex justify-center items-center text-white text-xl font-bold  bg-red-500 rounded-2xl"
+                className="w-10 h-10 flex justify-center items-center text-white text-xl font-bold  bg-red-500 rounded-full"
               >
                 &times;
               </button>
@@ -180,52 +180,53 @@ function Cart() {
         ))}
       </div>
 
-      <div className="w-2/5 flex flex-col px-5 py-2 text-base">
+      <div className="lg:w-2/5 flex flex-col px-0 sm:px-5 py-2 text-base">
         <div className="text-2xl flex justify-center w-full mb-3">Info Order</div>
         {currentUser ? (
           <div className="w-full flex flex-col">
-            <div className="flex justify-between items-center">
-              <div className=" flex-[0.48] flex flex-col">
+            <div className="flex flex-col-reverse sm:flex-row justify-between items-center">
+              <div className="w-full sm:flex-[0.48] flex flex-col">
                 <span className="bottom-0 left-0">Fisrt Name</span>
-                <div className=" flex justify-around items-center p-2 border-2 rounded-2xl border-slate-600 mb-2">
+                <div className=" flex justify-around items-center p-2 border-2 rounded border-slate-600 mb-2">
                   <input value={currentUser.firstName} disabled className="flex-1 border-none outline-none px-3" />
                 </div>
               </div>
-              <div className="flex-[0.48] flex flex-col">
+              <div className="w-full sm:flex-[0.48] flex flex-col">
                 <span className="bottom-0 left-0">Last Name</span>
-                <div className=" flex justify-around items-center p-2 border-2 rounded-2xl border-slate-600  mb-2">
+                <div className=" flex justify-around items-center p-2 border-2 rounded border-slate-600  mb-2">
                   <input value={currentUser.lastName} disabled className="flex-1 border-none outline-none px-3" />
                 </div>
               </div>
             </div>
             <div className=" flex flex-col">
               <span className="bottom-0 left-0">Phone Number</span>
-              <div className=" flex justify-around items-center p-2 border-2 rounded-2xl border-slate-600  mb-2">
+              <div className=" flex justify-around items-center p-2 border-2 rounded border-slate-600  mb-2">
                 <FaPhoneAlt className="text-2xl" />
                 <input value={currentUser.phone} disabled className="flex-1 border-none outline-none px-3" />
               </div>
             </div>
             <div className=" flex flex-col">
               <span className="bottom-0 left-0">Email</span>
-              <div className=" flex justify-around items-center p-2 border-2 rounded-2xl border-slate-600  mb-2">
+              <div className=" flex justify-around items-center p-2 border-2 rounded border-slate-600  mb-2">
                 <IoMdMail className="text-2xl" />
                 <input value={currentUser.email} disabled className="flex-1 border-none outline-none px-3" />
               </div>
             </div>
             <div className=" flex flex-col border-b pb-2">
               <span className="bottom-0 left-0">Shipping Address</span>
-              <div className=" flex justify-around items-center p-2 border-2 rounded-2xl border-slate-600  mb-2">
+              <div className=" flex justify-around items-center p-2 border-2 rounded border-slate-600  mb-2">
                 <MdLocationOn className="text-2xl" />
                 <input
                   value={shippingAddress.detailAddress}
                   onChange={(e) => setShippingAddress(e.target.value)}
                   className="flex-1 border-none outline-none px-3"
                   placeholder="Shipping address"
+                  autoFocus
                 />
               </div>
             </div>
-            <div className=" flex items-center justify-center py-2">
-              <div className="w-4/5 flex items-center justify-between">
+            <div className=" w-full flex items-center justify-center py-2">
+              <div className="w-full flex items-center justify-between">
                 <div
                   onClick={() => setPaymentMethod(1)}
                   className={
@@ -234,8 +235,8 @@ function Cart() {
                       : 'flex-[0.4] flex items-center  cursor-pointer border-2 border-slate-400 py-3 px-2 rounded-lg '
                   }
                 >
-                  <BsFillCreditCardFill className="w-8 h-8 mr-2" />
-                  <label htmlFor="prepaid" className="flex-1 flex justify-center cursor-pointer">
+                  <BsFillCreditCardFill className="w-5 h-5 sm:w-8 sm:h-8 mr-2" />
+                  <label htmlFor="prepaid" className="flex-1 flex justify-center cursor-pointer text-xs sm:text-base">
                     Pay with card
                   </label>
                   <input
@@ -256,8 +257,8 @@ function Cart() {
                       : 'flex-[0.4] flex items-center  cursor-pointer border-2 border-slate-400 py-3 px-2 rounded-lg '
                   }
                 >
-                  <BsCashStack className="w-8 h-8 mr-2" />
-                  <label htmlFor="postpaid" className="flex-1 flex justify-center cursor-pointer">
+                  <BsCashStack className="w-5 h-5 sm:w-8 sm:h-8 mr-2" />
+                  <label htmlFor="postpaid" className="flex-1 flex justify-center cursor-pointer text-xs sm:text-base">
                     Cash
                   </label>
                   <input
@@ -274,7 +275,7 @@ function Cart() {
             </div>
           </div>
         ) : (
-          <div className="flex-[0.5] flex justify-center items-center ">
+          <div className="w-full sm:flex-[0.5] flex justify-center items-center ">
             <button
               onClick={handlePassToSignIn}
               className="flex-1 border-2 rounded-lg border-sky-400 py-3 text-xl hover:text-white hover:bg-sky-400 hover:border-white"
@@ -284,15 +285,15 @@ function Cart() {
           </div>
         )}
         <div className="flex flex-col p-3">
-          <div className=" flex  text-2xl items-center justify-between">
+          <div className=" flex text-lg sm:text-2xl items-center justify-between">
             <div>Total:</div>
             <div>{totalPrice.toLocaleString()} VND</div>
           </div>
-          <div className=" flex  text-2xl items-center justify-between">
+          <div className=" flex   text-lg sm:text-2xl items-center justify-between">
             <div>Discount:</div>
             <div className="line-through">{priceSale.toLocaleString()} VND</div>
           </div>
-          <div className=" flex  text-2xl items-center justify-between border-b pb-2">
+          <div className=" flex   text-lg sm:text-2xl items-center justify-between border-b pb-2">
             <div>Total after discount:</div>
             <div className="">{discounted.toLocaleString()} VND</div>
           </div>

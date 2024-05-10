@@ -149,8 +149,8 @@ function CommentPage() {
                 key={comment.id}
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
               >
-                <td className="py-4 px-6">{comment.User.email}</td>
-                <td className="py-4 px-6">{comment.Product.name}</td>
+                <td className="py-4 px-6">{comment.user.email}</td>
+                <td className="py-4 px-6">{comment.product.name}</td>
                 <td className="py-4 px-6">{comment.content}</td>
                 <td className="py-4 px-6">{comment.createdAt.slice(0, 10)}</td>
                 <td className="py-4 px-6">
@@ -169,9 +169,9 @@ function CommentPage() {
         {/* Pagination */}
         <nav className="flex justify-between items-center pt-4 text-base" aria-label="Table navigation">
           <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-            Showing{' '}
+            Showing
             <span className="font-semibold text-gray-900 dark:text-white">
-              {offSet + 1 + '-' + (offSet + limit > total ? total : offSet + limit)}{' '}
+              {offSet + 1 + '-' + (offSet + limit > total ? total : offSet + limit)}
             </span>
             of <span className="font-semibold text-gray-900 dark:text-white">{total}</span>
           </span>

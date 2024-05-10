@@ -180,20 +180,20 @@ function ProductPage() {
                 key={order.id}
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
               >
-                <td className="py-4 px-6">{order.User.firstName}</td>
+                <td className="py-4 px-6">{order.user.firstName}</td>
                 <td className="py-4 px-6">{order.shippingAddress}</td>
                 <td className="py-4 px-6">{order.status}</td>
                 <td className="py-4 px-6">{order.cancelOrder === true ? 'Cancel' : 'No'}</td>
                 <td className="py-4 px-6">{order.createdAt.slice(0, 10)}</td>
 
-                <td className="py-4 px-6">{order.User.phone}</td>
+                <td className="py-4 px-6">{order.user.phone}</td>
                 <td className="py-4 px-6">
                   <button
                     onClick={() => handleShowDetail(order.id)}
                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                   >
                     Detail
-                  </button>{' '}
+                  </button>
                   <button
                     onClick={() => deleteOrder(order.id)}
                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
@@ -209,9 +209,9 @@ function ProductPage() {
         {/* Pagination */}
         <nav className="flex justify-between items-center pt-4 text-base" aria-label="Table navigation">
           <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-            Showing{' '}
+            Showing
             <span className="font-semibold text-gray-900 dark:text-white">
-              {offSet + 1 + '-' + (offSet + limit > total ? total : offSet + limit)}{' '}
+              {offSet + 1 + '-' + (offSet + limit > total ? total : offSet + limit)}
             </span>
             of <span className="font-semibold text-gray-900 dark:text-white">{total}</span>
           </span>
